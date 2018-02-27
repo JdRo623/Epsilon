@@ -9,6 +9,7 @@ public class PreguntaSingleton {
     private List<Pregunta> nivel1Final;
     private List<Pregunta> nivel2Final;
     private List<Pregunta> nivel3Final;
+    private List<Pregunta> elegidas;
     private static PreguntaSingleton instance;
 
     private PreguntaSingleton()
@@ -20,6 +21,8 @@ public class PreguntaSingleton {
         nivel1Final = new List<Pregunta>();
         nivel2Final = new List<Pregunta>();
         nivel3Final = new List<Pregunta>();
+
+        elegidas = new List<Pregunta>();
     }
 
     public static PreguntaSingleton GetInstance() {
@@ -41,16 +44,16 @@ public class PreguntaSingleton {
     {
         return nivel3[(Random.Range(0, nivel3.Count))];
     }
-    public void SetPreguntaNivel1(string titulo) {
-        nivel1.Add(new Pregunta(titulo,""));
+    public void SetPreguntaNivel1(string titulo,string[] respuestas) {
+        nivel1.Add(new Pregunta(titulo,respuestas));
     }
-    public void SetPreguntaNivel2(string titulo)
+    public void SetPreguntaNivel2(string titulo, string[] respuestas)
     {
-        nivel2.Add(new Pregunta(titulo, ""));
+        nivel2.Add(new Pregunta(titulo, respuestas));
     }
-    public void SetPreguntaNivel3(string titulo)
+    public void SetPreguntaNivel3(string titulo, string[] respuestas)
     {
-        nivel3.Add(new Pregunta(titulo, ""));
+        nivel3.Add(new Pregunta(titulo, respuestas));
     }
     public Pregunta GetPreguntaNivel1Final()
     {
@@ -65,16 +68,20 @@ public class PreguntaSingleton {
         return nivel3Final[(Random.Range(0, nivel3Final.Count))];
     }
 
-    public void SetPreguntaNivel1Final(string titulo)
-    {
-        nivel1Final.Add(new Pregunta(titulo, ""));
+    public void SetPreguntaDefinitiva(Pregunta pregunta) {
+        elegidas.Add(pregunta);
     }
-    public void SetPreguntaNivel2Final(string titulo)
+
+    public void SetPreguntaNivel1Final(string titulo, string[] respuestas)
     {
-        nivel2Final.Add(new Pregunta(titulo, ""));
+        nivel1Final.Add(new Pregunta(titulo, respuestas));
     }
-    public void SetPreguntaNivel3Final(string titulo)
+    public void SetPreguntaNivel2Final(string titulo, string[] respuestas) 
     {
-        nivel3Final.Add(new Pregunta(titulo, ""));
+        nivel2Final.Add(new Pregunta(titulo, respuestas));
+    }
+    public void SetPreguntaNivel3Final(string titulo, string[] respuestas)
+    {
+        nivel3Final.Add(new Pregunta(titulo, respuestas));
     }
 }

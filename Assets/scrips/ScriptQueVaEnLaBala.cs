@@ -21,10 +21,9 @@ public class ScriptQueVaEnLaBala : MonoBehaviour {
 	{
 		if (other.CompareTag ("Enemigo")) 
 		{
+            Score.score++;
 			Debug.Log ("Enemigo ah Muerto");	
 			Destroy (other.gameObject);
-
-             
 
         }
 

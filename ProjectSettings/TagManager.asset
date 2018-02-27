@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemigo
+  - Meteor
+  - EndGame
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - estrellas2
   - planetas
   - paredes
-  - 
+  - Meteor
   - 
   - 
   - 

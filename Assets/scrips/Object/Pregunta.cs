@@ -5,20 +5,29 @@ using UnityEngine;
 public class Pregunta {
 
     string titulo;
+    string[] respuestasPosibles;
     string respuesta;
 
-    public Pregunta(string titulo, string respuesta) {
+    public Pregunta(string titulo, string[] respuestas) {
+        this.titulo = titulo;
+        this.respuestasPosibles = respuestas;
+            }
+    public Pregunta(string titulo, string respuesta)
+    {
         this.titulo = titulo;
         this.respuesta = respuesta;
-            }
-
-    public string getTitulo() {
+    }
+    public string GetTitulo() {
         return titulo;
     }
-    public string getRespuesta() {
+    public string[] GetRespuestas()
+    {
+        return respuestasPosibles;
+    }
+    public string GetRespuesta() {
         return respuesta;
     }
-    public void setRespuesta(string respuesta) {
+    public void SetRespuesta(string respuesta) {
         this.respuesta = respuesta;
     }
 }

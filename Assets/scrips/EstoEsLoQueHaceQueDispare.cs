@@ -59,6 +59,7 @@ public class EstoEsLoQueHaceQueDispare : MonoBehaviour {
                 daClaw.transform.localPosition = initClawPosition;
                 isReturning = false;
                 daClawIsWorking = false;
+                daClaw.GetComponent<Claw>().DestroyMeteor();
             }
            
         }

@@ -42,6 +42,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4733032430490744}
+  - component: {fileID: 58244952600785580}
+  - component: {fileID: 114395688028862200}
   m_Layer: 8
   m_Name: Claw
   m_TagString: Untagged
@@ -344,7 +346,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065060989253888}
-  m_Mesh: {fileID: 43484232010514508, guid: cc6626d5acd6c5f4ba226799f43cf34a, type: 2}
+  m_Mesh: {fileID: 0}
 --- !u!50 &50993228289225690
 Rigidbody2D:
   serializedVersion: 4
@@ -365,6 +367,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58244952600785580
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1081231140526916}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.15, y: 0.14}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!68 &68771191944604032
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -430,6 +447,17 @@ MonoBehaviour:
   player: {fileID: 1065060989253888}
   respawnPoint: {fileID: 1776938865624526}
   timeOfDead: 1
+--- !u!114 &114395688028862200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1081231140526916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8484c1e590e1f249b98fcac7c1c4c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114519573988414958
 MonoBehaviour:
   m_ObjectHideFlags: 1

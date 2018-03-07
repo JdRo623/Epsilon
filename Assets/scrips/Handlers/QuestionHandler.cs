@@ -12,45 +12,69 @@ public class QuestionHandler : MonoBehaviour {
     ScenesTransitionHandler sceneTransition;
     public Text respuesta3;
     // Use this for initialization
+
     void Start () {
         sceneTransition = new ScenesTransitionHandler();
         level = LevelManagerSingleton.GetInstance().GetLevel();
         start = LevelManagerSingleton.GetInstance().GetCurrentLevelState();
+
         switch (level) {
             case 1:
                 switch (start) {
                     case 1:
+                        Debug.Log("Pregunta nivel 1");
                         pregunta = PreguntaSingleton.GetInstance().GetPreguntaNivel1();
-                        break;
+                        LevelManagerSingleton.GetInstance().AdvanceState();
+
+                        SetUI();
+                        return;
                     case 2:
+                        Debug.Log("Pregunta nivel 1 f");
                         pregunta = PreguntaSingleton.GetInstance().GetPreguntaNivel1Final();
-                        break;
+                        LevelManagerSingleton.GetInstance().AdvanceState();
+                        LevelManagerSingleton.GetInstance().AdvanceLevel();
+                        SetUI();
+                        return;
                 }
-                break;
+                return;
             case 2:
                 switch (start)
                 {
                     case 1:
+                        Debug.Log("Pregunta nivel 2");
                         pregunta = PreguntaSingleton.GetInstance().GetPreguntaNivel2();
-                        break;
+                        LevelManagerSingleton.GetInstance().AdvanceState();
+                        SetUI();
+                        return;
                     case 2:
+                        Debug.Log("Pregunta nivel 2f");
                         pregunta = PreguntaSingleton.GetInstance().GetPreguntaNivel2Final();
-                        break;
+                        LevelManagerSingleton.GetInstance().AdvanceState();
+                        LevelManagerSingleton.GetInstance().AdvanceLevel();
+                        SetUI();
+                        return;
                 }
-                break;
+                return;
             case 3:
                 switch (start)
                 {
                     case 1:
+                        Debug.Log("Pregunta nivel 3");
+                        LevelManagerSingleton.GetInstance().AdvanceState();
                         pregunta = PreguntaSingleton.GetInstance().GetPreguntaNivel3();
-                        break;
+                        SetUI();
+                        return;
                     case 2:
+                        Debug.Log("Pregunta nivel 3f");
+                        LevelManagerSingleton.GetInstance().AdvanceState();
                         pregunta = PreguntaSingleton.GetInstance().GetPreguntaNivel3Final();
-                        break;
+                        LevelManagerSingleton.GetInstance().AdvanceLevel();
+                        SetUI();
+                        return;
                 }
-                break;
+                return;
         }
-        SetUI();
+        
         
 
     }
@@ -62,7 +86,8 @@ public class QuestionHandler : MonoBehaviour {
         respuesta3.text = pregunta.GetRespuestas()[2];
     }
     public void SetRespuesta(int preguntaPos) {
-        sceneTransition.GoToGame();
+      
         PreguntaSingleton.GetInstance().SetPreguntaDefinitiva(new Pregunta(pregunta.GetTitulo(), pregunta.GetRespuestas()[preguntaPos]));
+        sceneTransition.CheckLevel();
     }
 }

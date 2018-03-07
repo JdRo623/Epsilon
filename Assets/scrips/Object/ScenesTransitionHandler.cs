@@ -3,17 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScenesTransitionHandler : MonoBehaviour {
-    // Use this for initialization
-    /*void Start() {
-        switch (levelId) {
-            case 1:
-                GoToGame();
-                break;
-            case 2:
-                GoToQuestion();
-                break;
-        }
-    }*/
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,24 +14,25 @@ public class ScenesTransitionHandler : MonoBehaviour {
 
     public void GoToGame() {
 
-        Debug.Log("entra 1 "+ LevelManagerSingleton.GetInstance().GetLevel());
+
         switch (LevelManagerSingleton.GetInstance().GetLevel()) {
             
             case 1:
-                LevelManagerSingleton.GetInstance().AdvanceLevel();
+ 
                 Application.LoadLevel("Level1");
                
                 break;
             case 2:
-                LevelManagerSingleton.GetInstance().AdvanceLevel();
                 Application.LoadLevel("Level2");
                 break;
             case 3:
-                LevelManagerSingleton.GetInstance().AdvanceLevel();
                 Application.LoadLevel("Level3");
                 break;
             default:
                 LevelManagerSingleton.GetInstance().Reset();
+                System.IO.File.WriteAllText("C:\\respuestas"+System.DateTime.Now.Day+ "_" + System.DateTime.Now.Month + "_"+ System.DateTime.Now.Year +
+                    "_" + System.DateTime.Now.Hour + "_" + System.DateTime.Now.Minute + 
+                    ".txt", "El usuario respondió:\n"+PreguntaSingleton.GetInstance().GetRespuestas());
                 Application.LoadLevel("menu");
                 break;
 
@@ -49,5 +40,58 @@ public class ScenesTransitionHandler : MonoBehaviour {
     }
     public void GoToQuestion() {
         Application.LoadLevel("Question");
+    }
+    public void CheckLevel() {
+        int level = LevelManagerSingleton.GetInstance().GetLevel();
+        int start = LevelManagerSingleton.GetInstance().GetCurrentLevelState();
+        switch (level)
+        {
+            case 1:
+                switch (start)
+                {
+                    case 1:
+                        GoToQuestion();
+                        return;
+                    case 2:
+                        Debug.Log("Pregunta nivel 1 f");
+                        GoToGame();
+                        return;
+                }
+                return;
+            case 2:
+                switch (start)
+                {
+                    case 1:
+                        Debug.Log("Pregunta nivel 2");
+                        GoToQuestion();
+                        return;
+                    case 2:
+                        Debug.Log("Pregunta nivel 2f");
+                        GoToGame();
+                        return;
+                }
+                return;
+            case 3:
+                switch (start)
+                {
+                    case 1:
+                        Debug.Log("Pregunta nivel 3");
+                        GoToQuestion();
+                        return;
+                    case 2:
+                        Debug.Log("Pregunta nivel 3f");
+                        GoToGame();
+                        return;
+                    default:
+                        Debug.Log("Go to menu");
+                        GoToGame();
+                        break;
+                }
+                return;
+            default:
+                Debug.Log("Go to menu");
+                GoToGame();
+                break;
+        }
     }
 }

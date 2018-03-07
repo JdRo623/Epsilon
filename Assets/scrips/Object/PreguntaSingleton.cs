@@ -84,4 +84,14 @@ public class PreguntaSingleton {
     {
         nivel3Final.Add(new Pregunta(titulo, respuestas));
     }
+    public void ResetRespuestas() {
+        elegidas.Clear();
+    }
+    public string GetRespuestas() {
+        string temp="";
+        foreach (Pregunta pregunta in elegidas){
+            temp += pregunta.ToString();
+        }
+        return temp;
+    }
 }

@@ -30,4 +30,9 @@ public class Pregunta {
     public void SetRespuesta(string respuesta) {
         this.respuesta = respuesta;
     }
+
+
+    public override string ToString() {
+        return titulo + ": " + respuesta + "\n";
+    }
 }

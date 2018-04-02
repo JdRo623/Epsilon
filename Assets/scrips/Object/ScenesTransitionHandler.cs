@@ -30,9 +30,9 @@ public class ScenesTransitionHandler : MonoBehaviour {
                 break;
             default:
                 LevelManagerSingleton.GetInstance().Reset();
-                System.IO.File.WriteAllText("C:\\respuestas"+System.DateTime.Now.Day+ "_" + System.DateTime.Now.Month + "_"+ System.DateTime.Now.Year +
-                    "_" + System.DateTime.Now.Hour + "_" + System.DateTime.Now.Minute + 
-                    ".txt", "El usuario respondió:\n"+PreguntaSingleton.GetInstance().GetRespuestas());
+                System.IO.File.WriteAllText("C:\\Respuestas\\respuesta_" + System.DateTime.Now.Day+ "_" + System.DateTime.Now.Month + "_"+ System.DateTime.Now.Year +
+                    "_" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + 
+                    ".txt", "El usuario respondió: \n"+PreguntaSingleton.GetInstance().GetRespuestas());
                 Application.LoadLevel("menu");
                 break;
 

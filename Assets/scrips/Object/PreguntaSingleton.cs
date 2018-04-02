@@ -90,7 +90,7 @@ public class PreguntaSingleton {
     public string GetRespuestas() {
         string temp="";
         foreach (Pregunta pregunta in elegidas){
-            temp += pregunta.ToString();
+            temp += pregunta.ToString()+",";
         }
         return temp;
     }

@@ -33,6 +33,6 @@ public class Pregunta {
 
 
     public override string ToString() {
-        return titulo + ": " + respuesta + "\n";
+        return "["+titulo + ": " + respuesta + "]";
     }
 }
